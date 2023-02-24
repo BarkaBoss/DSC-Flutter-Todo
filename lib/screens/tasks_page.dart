@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class TasksPage extends StatefulWidget {
   const TasksPage({Key? key}) : super(key: key);
 
@@ -11,8 +12,8 @@ class _TasksPageState extends State<TasksPage> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text("To Do"),
-      ),
+        child: Text("To Do!"),
+      )
     );
   }
 }

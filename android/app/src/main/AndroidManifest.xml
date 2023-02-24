@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ng.com.nokt.daily_planner">
+    package="ng.com.nokt">
    <application
         android:label="daily_planner"
         android:name="${applicationName}"

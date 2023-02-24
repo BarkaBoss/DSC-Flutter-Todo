@@ -1,4 +1,4 @@
-package ng.com.nokt.daily_planner
+package ng.com.nokt
 
 import io.flutter.embedding.android.FlutterActivity
 

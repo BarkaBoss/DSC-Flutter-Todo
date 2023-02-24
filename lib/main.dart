@@ -1,4 +1,5 @@
-import 'package:daily_planner/screens/intro_page.dart';
+import 'package:daily_planner/screens/intro_screen.dart';
+import 'package:daily_planner/screens/tasks_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: IntroPage(),
+      initialRoute: 'intro',
+       routes: {
+        'intro': (context) => IntroPage(),
+         'tasks':(context) => TasksPage(),
+       },
     );
   }
 }
