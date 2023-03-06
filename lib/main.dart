@@ -1,8 +1,10 @@
 import 'package:daily_planner/screens/intro_screen.dart';
 import 'package:daily_planner/screens/tasks_page.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter("hive_box");
   runApp(const MyApp());
 }
 
