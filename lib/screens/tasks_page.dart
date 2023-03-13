@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/task.dart';
@@ -53,8 +54,30 @@ class _TasksPageState extends State<TasksPage> {
               setState(() {});
             },
             onLongPress: () {
-              _box!.deleteAt(index);
-              setState(() {});
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Delete Task?"),
+                      content: SingleChildScrollView(
+                        child: Text("Would you like to delete this task?"),
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              _box!.deleteAt(index);
+                              setState(() {});
+                              Navigator.pop(context, "Yes");
+                            },
+                            child: const Text("Yes")),
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context, "No");
+                            },
+                            child: const Text("No")),
+                      ],
+                    );
+                  });
             },
           );
         });
@@ -62,15 +85,15 @@ class _TasksPageState extends State<TasksPage> {
 
   Widget _tasksWidget() {
     return FutureBuilder(
-      future: Hive.openBox("tasks"),
+        future: Hive.openBox("tasks"),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-      if (snapshot.hasData) {
-        _box = snapshot.data;
-        return _todoList();
-      } else {
-        return Center(child: const CircularProgressIndicator());
-      }
-    });
+          if (snapshot.hasData) {
+            _box = snapshot.data;
+            return _todoList();
+          } else {
+            return Center(child: const CircularProgressIndicator());
+          }
+        });
   }
 
   void displayTaskPop() {
