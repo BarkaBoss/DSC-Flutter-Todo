@@ -40,8 +40,16 @@ class _TasksPageState extends State<TasksPage> {
         itemBuilder: (BuildContext context, int index) {
           var task = Task.fromMap(tasks[index]);
           return ListTile(
-            title: Text(task.todo),
-            subtitle: Text(task.timeStamp.toString()),
+            title: Text(
+              task.todo,
+              style: TextStyle(
+                  decoration: task.done ? TextDecoration.lineThrough : null),
+            ),
+            subtitle: Text(
+              task.timeStamp.toString(),
+              style: TextStyle(
+                  decoration: task.done ? TextDecoration.lineThrough : null),
+            ),
             trailing: task.done
                 ? Icon(
                     Icons.check_box_outlined,
