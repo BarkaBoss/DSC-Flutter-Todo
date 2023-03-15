@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/task.dart';
+import 'month.dart';
 
 class TasksPage extends StatefulWidget {
   const TasksPage({Key? key}) : super(key: key);
@@ -35,13 +36,16 @@ class _TasksPageState extends State<TasksPage> {
 
   Widget _todoList() {
     List tasks = _box!.values.toList();
+    List fullMonth = months().values.toList();
+
     return ListView.builder(
         itemCount: tasks.length,
         itemBuilder: (BuildContext context, int index) {
           var task = Task.fromMap(tasks[index]);
           return ListTile(
             title: Text(task.todo),
-            subtitle: Text(task.timeStamp.toString()),
+            subtitle: Text(
+                "${task.timeStamp.day}th ${fullMonth.elementAt(task.timeStamp.month - 1)}, ${task.timeStamp.year} ${task.timeStamp.hour > 12 ? task.timeStamp.hour - 12 : task.timeStamp.hour}:${task.timeStamp.minute < 10 ? '0${task.timeStamp.minute}' : task.timeStamp.minute} ${task.timeStamp.hour > 12 ? 'PM' : 'AM'}"),
             trailing: task.done
                 ? Icon(
                     Icons.check_box_outlined,
