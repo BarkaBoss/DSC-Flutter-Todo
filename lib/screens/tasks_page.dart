@@ -49,13 +49,11 @@ class _TasksPageState extends State<TasksPage> {
                   decoration: task.done ? TextDecoration.lineThrough : null),
             ),
             subtitle: Text(
-              task.timeStamp.toString(),
+            "${task.timeStamp.day}th ${fullMonth.elementAt(task.timeStamp.month - 1)}, ${task.timeStamp.year} ${task.timeStamp.hour > 12 ? task.timeStamp.hour - 12 : task.timeStamp.hour}:${task.timeStamp.minute < 10 ? '0${task.timeStamp.minute}' : task.timeStamp.minute} ${task.timeStamp.hour > 12 ? 'PM' : 'AM'}",
               style: TextStyle(
-                  decoration: task.done ? TextDecoration.lineThrough : null),
+                decoration: task.done ? TextDecoration.lineThrough : null
+              ),
             ),
-            title: Text(task.todo),
-            subtitle: Text(
-                "${task.timeStamp.day}th ${fullMonth.elementAt(task.timeStamp.month - 1)}, ${task.timeStamp.year} ${task.timeStamp.hour > 12 ? task.timeStamp.hour - 12 : task.timeStamp.hour}:${task.timeStamp.minute < 10 ? '0${task.timeStamp.minute}' : task.timeStamp.minute} ${task.timeStamp.hour > 12 ? 'PM' : 'AM'}"),
 
             trailing: task.done
                 ? Icon(
